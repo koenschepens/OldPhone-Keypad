@@ -1,7 +1,5 @@
 #!/bin/bash
 
-clear
-
 echo "installing..."
 
 echo "disabling oldkeypad services"
