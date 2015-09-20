@@ -8,7 +8,7 @@ import logging
 import ConfigParser
 
 config = ConfigParser.RawConfigParser()
-config.read('kbdout.config')
+config.read('/usr/share/keypad/keypad.config')
 
 try:
     from xbmc.xbmcclient import XBMCClient
@@ -73,8 +73,8 @@ kbmapping = {
         G.BUTTONSTER: "backspace"
 }
 
-#logging.basicConfig(filename='/var/log/kbdout.log',level=logging.INFO)
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(filename='/var/log/keypad.log',level=logging.INFO)
+#logging.basicConfig(level=logging.INFO)
 
 logging.info("Setting GPIO mode to BCM")
 GPIO.setmode(GPIO.BCM)
