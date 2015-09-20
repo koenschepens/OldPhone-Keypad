@@ -1,9 +1,7 @@
 #!/bin/sh
 
 now=$(date +"%m_%d_%Y_%T")
-exec echo "********* update.sh **********" >> ~/keypadUpdater2.log
-exec echo $now >> ~/keypadUpdater2.log
-echo $USER >> ~/keypadUpdater2.log
+echo "********* update.sh **********" >> ~/keypadUpdater2.log
 
 cd /usr/bin/oldphone/OldPhone-Keypad
 
