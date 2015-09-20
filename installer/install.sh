@@ -5,14 +5,25 @@ clear
 echo "installing..."
 
 echo "disabling oldkeypad services"
-/etc/init.d/oldkeypad stop
 
 echo "deleting existing oldkeypad files"
-rm /etc/init.d/oldkeypad
+if [ -f /etc/init.d/oldkeypad ]
+  then
+	/etc/init.d/oldkeypad stop
+    rm /etc/init.d/oldkeypad
+fi
+if [ -f /etc/init.d/keypadd ]
+  then
+	/etc/init.d/keypadd stop
+    rm /etc/init.d/keypadd
+fi
 
 echo "copying new files"
 mkdir /usr/share/oldkeypad
-cp ./kbdout.config /usr/share/oldkeypad/kbdout.config
+if [ ! -f /usr/share/oldkeypad/kbdout.config ]
+	then
+		cp ./kbdout.config /usr/share/oldkeypad/kbdout.config
+fi
 
 cp ./keypadd.sh /etc/init.d/keypadd
 chmod 777 /etc/init.d/keypadd
