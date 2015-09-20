@@ -19,14 +19,14 @@ if [ -f /etc/init.d/keypadd ]
 fi
 
 echo "copying new files"
-if [ ! -d /usr/share/oldkeypad ]
+if [ ! -d /usr/share/keypad ]
 	then
-		mkdir /usr/share/oldkeypad
+		mkdir /usr/share/keypad
 fi
 
-if [ ! -f /usr/share/oldkeypad/kbdout.config ]
+if [ ! -f /usr/share/keypad/keypad.config ]
 	then
-		cp ./kbdout.config /usr/share/oldkeypad/kbdout.config
+		cp ./keypad.config /usr/share/keypad/keypad.config
 fi
 
 cp ./keypadd.sh /etc/init.d/keypadd
