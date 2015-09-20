@@ -4,7 +4,7 @@
 DAEMON=/usr/bin/python
 
 # startup args
-DAEMON_OPTS=" /usr/bin/oldphone/OldPhone-Keypad/program/kbdout.py"
+DAEMON_OPTS=" /usr/bin/oldphone/OldPhone-Keypad/program/keypad.py"
 
 # script name
 NAME=oldphonekeypad
@@ -16,7 +16,7 @@ DESC=OldPhoneKeyPad
 RUN_AS=root
 
 # Path of the PID file
-PID_FILE=/var/run/kbdout.pid
+PID_FILE=/var/run/keypadd.pid
 
 ############### END EDIT ME ##################
 
