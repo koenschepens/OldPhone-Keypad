@@ -1,3 +1,5 @@
+#!/bin/sh
+
 cd /usr/bin/oldphone/OldPhone-Keypad
 
 git update-server-info
