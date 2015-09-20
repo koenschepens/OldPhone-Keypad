@@ -34,3 +34,4 @@ chmod 777 /etc/init.d/keypadd
 
 echo "enabling keypadd service"
 /etc/init.d/keypadd start
+sudo update-rc.d keypadd defaults
