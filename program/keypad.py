@@ -99,7 +99,7 @@ lock = False
 
 logging.info("Setting up Kodi client")
 
-host = config.getstring("xbmc", "host")
+host = config.get("xbmc", "host")
 port = config.getint("xbmc", "port")
 
 logging.info("host: " + str(host))
