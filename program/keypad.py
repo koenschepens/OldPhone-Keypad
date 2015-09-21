@@ -7,8 +7,10 @@ import sys
 import logging
 import ConfigParser
 
+addonFolder = "/home/osmc/.kodi/addons/service.keypad/" 
+
 config = ConfigParser.RawConfigParser()
-config.read('/usr/share/keypad/keypad.config')
+config.read(addonFolder + 'keypad.config')
 
 try:
     from xbmc.xbmcclient import XBMCClient
@@ -73,7 +75,7 @@ kbmapping = {
         G.BUTTONSTER: "backspace"
 }
 
-logging.basicConfig(filename='/var/log/keypad.log',level=logging.INFO)
+logging.basicConfig(filename=addonFolder + 'keypad.log',level=logging.INFO)
 #logging.basicConfig(level=logging.INFO)
 
 logging.info("Setting GPIO mode to BCM")

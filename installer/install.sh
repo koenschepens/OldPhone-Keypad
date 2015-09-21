@@ -1,6 +1,6 @@
 #!/bin/bash
 
-serviceFolder="/home/kodi/.kodi/addons/service.keypad"
+serviceFolder="/home/osmc/.kodi/addons/service.keypad"
 
 echo "installing..."
 
