@@ -7,16 +7,16 @@ import sys
 import logging
 import ConfigParser
 
+try:
+    from xbmc.xbmcclient import XBMCClient
+except:
+    sys.path.append('/usr/share/pyshared/xbmc')
+    from xbmcclient import XBMCClient
+
 addonFolder = "/home/osmc/.kodi/addons/service.keypad/" 
 
 config = ConfigParser.RawConfigParser()
 config.read(addonFolder + 'keypad.config')
-
-try:
-    from xbmc.xbmcclient import XBMCClient
-except:
-    sys.path.append('../../lib/python')
-    from xbmcclient import XBMCClient
 
 class G(Enum):
     NONE = 0
