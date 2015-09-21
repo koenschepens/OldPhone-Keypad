@@ -5,16 +5,16 @@ serviceFolder="/home/kodi/.kodi/addons/service.keypad"
 echo "installing..."
 
 echo "copying new files"
-if [ ! -d $(serviceFolder) ]
+if [ ! -d $serviceFolder ]
 	then
-		mkdir $(serviceFolder)
+		mkdir $serviceFolder
 fi
 
-cp ../program/* $(serviceFolder)/
+cp ../program/* $serviceFolder/
 
-if [ ! -f $(serviceFolder)/keypad.config ]
+if [ ! -f $serviceFolder/keypad.config ]
 	then
-		cp ./keypad.config $(serviceFolder)/keypad.config
+		cp ./keypad.config $serviceFolder/keypad.config
 fi
 
 echo "Done"
