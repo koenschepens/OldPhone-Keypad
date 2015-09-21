@@ -1,35 +1,20 @@
 #!/bin/bash
 
+serviceFolder="/home/kodi/.kodi/addons/service.keypad"
+
 echo "installing..."
 
-echo "disabling oldkeypad services"
-
-echo "deleting existing oldkeypad files"
-if [ -f /etc/init.d/oldkeypad ]
-  then
-	/etc/init.d/oldkeypad stop
-    rm /etc/init.d/oldkeypad
-fi
-if [ -f /etc/init.d/keypadd ]
-  then
-	/etc/init.d/keypadd stop
-    rm /etc/init.d/keypadd
-fi
-
 echo "copying new files"
-if [ ! -d /usr/share/keypad ]
+if [ ! -d $(serviceFolder) ]
 	then
-		mkdir /usr/share/keypad
+		mkdir $(serviceFolder)
 fi
 
-if [ ! -f /usr/share/keypad/keypad.config ]
+cp ../program/* $(serviceFolder)/
+
+if [ ! -f $(serviceFolder)/keypad.config ]
 	then
-		cp ./keypad.config /usr/share/keypad/keypad.config
+		cp ./keypad.config $(serviceFolder)/keypad.config
 fi
 
-cp ./keypadd.sh /etc/init.d/keypadd
-chmod 777 /etc/init.d/keypadd
-
-echo "enabling keypadd service"
-/etc/init.d/keypadd start
-sudo update-rc.d keypadd defaults
+echo "Done"
