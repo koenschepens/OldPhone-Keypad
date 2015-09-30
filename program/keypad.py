@@ -3,6 +3,7 @@ import RPi.GPIO as GPIO
 from enum import Enum
 from subprocess import call
 import time
+import datetime
 import sys
 import logging
 import ConfigParser
@@ -48,8 +49,8 @@ class G(Enum):
 mapping = {
    	G.BUTTON1: "one",
    	G.BUTTON2: "two",
-    	G.BUTTON3: "three",
-    	G.BUTTON4: "four",
+    G.BUTTON3: "three",
+    G.BUTTON4: "four",
 	G.BUTTON5: "five",
         G.BUTTON6: "six",
         G.BUTTON7: "seven",
@@ -76,6 +77,10 @@ kbmapping = {
 }
 
 logging.basicConfig(filename=addonFolder + 'keypad.log',level=logging.INFO)
+
+now - datetime.datetime.now().isoformat()
+
+logging.info(str(now))
 #logging.basicConfig(level=logging.INFO)
 
 logging.info("Setting GPIO mode to BCM")
