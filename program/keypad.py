@@ -90,10 +90,10 @@ GPIO.setmode(GPIO.BCM)
 
 def setReadWrite(channelsToDown, channelsToUp):
     for row in channelsToDown:
-        #logging.info("Setting up channel " + str(row) + " to PUD_DOWN. ")
+        logging.info("Setting up channel " + str(row) + " to PUD_DOWN. ")
         GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     for column in channelsToUp:
-        #logging.info("Setting up channel " + str(column) + " to PUD_UP. ")
+        logging.info("Setting up channel " + str(column) + " to PUD_UP. ")
         GPIO.setup(column, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         #GPIO.setup(column, GPIO.OUT)
 
@@ -168,7 +168,7 @@ def start():
         logging.info("reading row " + str(row))
         value = GPIO.input(row)
         if value:
-            logging.info("row is up: " + str(channelEnums[i]))
+            logging.info("row " + str(row) + " is up: " + str(channelEnums[i]))
             channelVal = channelVal + channelEnums[i]
         i = i + 1
 
