@@ -76,13 +76,15 @@ kbmapping = {
         G.BUTTONSTER: "backspace"
 }
 
-logging.basicConfig(filename=addonFolder + 'keypad.log',level=logging.INFO)
+#logging.basicConfig(filename=addonFolder + 'keypad.log',level=logging.INFO)
+logging.basicConfig(level=logging.INFO)
 
 now - datetime.datetime.now().isoformat()
 
 logging.info(str(now))
-#logging.basicConfig(level=logging.INFO)
 
+logging.info("Cleanup GPIO")
+GPIO.cleanup()
 logging.info("Setting GPIO mode to BCM")
 GPIO.setmode(GPIO.BCM)
 
