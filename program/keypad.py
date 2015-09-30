@@ -87,7 +87,6 @@ logging.info("Setting GPIO mode to BCM")
 GPIO.setmode(GPIO.BCM)
 
 def setReadWrite(channelsToDown, channelsToUp):
-    sleep(0.1)
     for row in channelsToDown:
         #logging.info("Setting up channel " + str(row) + " to PUD_DOWN. ")
         GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
@@ -123,6 +122,7 @@ previousChannelVal = G.NONE
 previousRow = G.NONE
 
 def row_changed(button, i):
+    logging.info("entering row_changed with button: " + str(button) + ", i: " + str(i))
     global channelVal
     
     #switch columns to input to read the values
@@ -153,21 +153,26 @@ def row_changed(button, i):
 
 
 def start():
+    logging.info("start() called")
     global channelVal
     global previousChannelVal
     global previousRow
 
+    logging.info("setReadWrite(rows, columns)")
     setReadWrite(rows, columns)
 
     i = 0
     for row in rows:
+        logging.info("reading row " + str(row))
         value = GPIO.input(row)
         if value:
-            logging.info("row " + str(channelEnums[i]))
+            logging.info("row is up: " + str(channelEnums[i]))
             channelVal = channelVal + channelEnums[i]
         i = i + 1
 
     if previousRow <> channelVal & channelVal:
+        logging.info("change detected")
+
         # Keep track of row to check changes
         previousRow = channelVal;
         row_changed(channelVal, i)
