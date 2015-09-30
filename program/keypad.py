@@ -79,7 +79,7 @@ kbmapping = {
 #logging.basicConfig(filename=addonFolder + 'keypad.log',level=logging.INFO)
 logging.basicConfig(level=logging.INFO)
 
-now - datetime.datetime.now().isoformat()
+now = datetime.datetime.now().isoformat()
 
 logging.info(str(now))
 
