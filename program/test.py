@@ -63,6 +63,7 @@ rows = [7,6,12,13,19]
 columns = [21,8,5,16,26,20]
 channelEnums = [G.BCM07,G.BCM06,G.BCM12,G.BCM13,G.BCM19,G.BCM21,G.BCM08,G.BCM05,G.BCM16,G.BCM26,G.BCM20]
 values = [0,0,0,0,0,0,0,0,0,0]
+i = 1
 
 while True:
 
@@ -82,5 +83,5 @@ while True:
 
     sleep(1)
 
-    logging.info(".")
-    
+    logging.info("." * i)
+    i = i + 1    
