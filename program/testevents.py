@@ -71,18 +71,18 @@ channelEnums = [G.BCM21,G.BCM07,G.BCM06,G.BCM12,G.BCM13,G.BCM19,G.BCM08,G.BCM05,
 values = [0,0,0,0,0,0,0,0,0,0]
 i = 1
 
-for (i, row) in enumerate(rows):
+gpiokeymappings = config.options("gpiokeymapping")
+
+for option in gpiokeymappings:
+    print (option)
+    row = Config.get("gpiokeymapping", option).split(",")[0]
+    column = Config.get("gpiokeymapping", option).split(",")[1]
+
     print("IN: " + str(row))
     GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-
-for (i, column) in enumerate(columns):
-    print("OUT: " + str(column))
+    print("out: " + str(column))
     GPIO.setup(column, GPIO.OUT)
     GPIO.remove_event_detect(column)
-
-for (i, row) in enumerate(rows):
-    print i, row
-    print("Event detection: " + str(row))
     GPIO.add_event_detect(row, GPIO.RISING, callback=row_changed) 
 
 while True:
