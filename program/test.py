@@ -6,10 +6,6 @@ import time
 from datetime import datetime
 import sys
 import logging
-import ConfigParser
-
-config = ConfigParser.RawConfigParser()
-config.read(addonFolder + 'keypad.config')
 
 class G(Enum):
     NONE = 0
