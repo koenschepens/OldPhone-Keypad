@@ -195,8 +195,6 @@ lock = False
 channelVal = G.NONE
 previousChannelVal = G.NONE
 
-setReadWrite(rows, columns)
-
 while True:
     start()
     sleep(0.05)
