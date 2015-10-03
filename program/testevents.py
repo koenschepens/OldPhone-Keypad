@@ -59,15 +59,17 @@ logging.info(str(now))
 logging.info("Setting GPIO mode to BCM")
 GPIO.setmode(GPIO.BCM)
 
-def row_changed(row):
-    print('Row changed: ' + str(row))
+#contains a dictionary of each row an array of columns for that row
+rows = {}
 
-def column_changed(column):
-    print('Column changed: ' + str(column))
-
-rows = []
+#keep seperate array with columns to check if already set up
 columns = []
 i = 1
+
+def row_changed(row):
+    global rows
+    print('Row changed: ' + str(row))
+    print('Contains columns: ' + rows[row])
 
 gpiokeymappings = config.options("gpiokeymapping")
 
@@ -78,9 +80,11 @@ for option in gpiokeymappings:
 
     if row not in rows:
         print("IN: " + str(row))
-        rows.append(row)
+        rows[row] = [column]
         GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         GPIO.add_event_detect(row, GPIO.RISING, callback=row_changed) 
+    else:
+        rows[row].append(column)
 
     if column not in columns:
         print("OUT: " + str(column))
