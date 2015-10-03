@@ -65,8 +65,8 @@ def row_changed(row):
 def column_changed(column):
     print('Column changed: ' + str(column))
 
-rows = [21,7,6,12,13,19]
-columns = [8,5,16,26,20]
+rows = []
+columns = []
 channelEnums = [G.BCM21,G.BCM07,G.BCM06,G.BCM12,G.BCM13,G.BCM19,G.BCM08,G.BCM05,G.BCM16,G.BCM26,G.BCM20]
 values = [0,0,0,0,0,0,0,0,0,0]
 i = 1
@@ -78,13 +78,17 @@ for option in gpiokeymappings:
     row = int(config.get("gpiokeymapping", option).split(",")[0])
     column = int(config.get("gpiokeymapping", option).split(",")[1])
 
-    print("IN: " + str(row))
-    print("OUT: " + str(column))
+    if row not in rows:
+        print("IN: " + str(row))
+        rows.insert(row)
+        GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+        GPIO.add_event_detect(row, GPIO.RISING, callback=row_changed) 
 
-    GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-    GPIO.setup(column, GPIO.OUT)
-    GPIO.remove_event_detect(column)
-    GPIO.add_event_detect(row, GPIO.RISING, callback=row_changed) 
+    if column not in columns:
+        print("OUT: " + str(column))
+        columns.insert(column)
+        GPIO.setup(column, GPIO.OUT)
+        GPIO.remove_event_detect(column)
 
 while True:
     try:
