@@ -66,5 +66,5 @@ for (i, row) in enumerate(rows):
 
 while True:
     print("." * i)
-    i++
+    i = i + 1
     pass
