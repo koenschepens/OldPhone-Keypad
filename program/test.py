@@ -42,8 +42,8 @@ now = datetime.now().isoformat()
 
 logging.info(str(now))
 
-logging.info("Cleanup GPIO")
-GPIO.cleanup()
+#logging.info("Cleanup GPIO")
+#GPIO.cleanup()
 logging.info("Setting GPIO mode to BCM")
 GPIO.setmode(GPIO.BCM)
 
