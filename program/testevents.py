@@ -84,4 +84,5 @@ while True:
     except:
         print "Unexpected error:", sys.exc_info()[0]
         GPIO.cleanup()
-    raise
+        raise
+    pass   
