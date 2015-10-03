@@ -3,7 +3,7 @@ import RPi.GPIO as GPIO
 from enum import Enum
 from subprocess import call
 import time
-import datetime
+from datetime import datetime
 import sys
 import logging
 import ConfigParser
@@ -91,7 +91,7 @@ kbmapping = {
 #logging.basicConfig(filename=addonFolder + 'keypad.log',level=logging.INFO)
 logging.basicConfig(level=logging.INFO)
 
-now = datetime.datetime.now().isoformat()
+now = datetime.now().isoformat()
 
 logging.info(str(now))
 
@@ -167,25 +167,20 @@ def row_changed(button, i):
 
 
 def start():
-    logging.info("start() called")
     global channelVal
     global previousChannelVal
     global previousRow
 
-    logging.info("setReadWrite(rows, columns)")
-    setReadWrite(rows, columns)
-
     i = 0
     for row in rows:
-        logging.info("reading row " + str(row))
         value = GPIO.input(row)
         if value:
-            logging.info("row " + str(row) + " is up: " + str(channelEnums[i]))
             channelVal = channelVal + channelEnums[i]
         i = i + 1
 
     if previousRow <> channelVal & channelVal:
         logging.info("change detected")
+        logging.info("row " + str(row) + " is up: " + str(channelEnums[i]))
 
         # Keep track of row to check changes
         previousRow = channelVal;
@@ -199,6 +194,8 @@ lock = False
 
 channelVal = G.NONE
 previousChannelVal = G.NONE
+
+setReadWrite(rows, columns)
 
 while True:
     start()
