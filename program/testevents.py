@@ -80,13 +80,13 @@ for option in gpiokeymappings:
 
     if row not in rows:
         print("IN: " + str(row))
-        rows.insert(row)
+        rows.append(row)
         GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         GPIO.add_event_detect(row, GPIO.RISING, callback=row_changed) 
 
     if column not in columns:
         print("OUT: " + str(column))
-        columns.insert(column)
+        columns.append(column)
         GPIO.setup(column, GPIO.OUT)
         GPIO.remove_event_detect(column)
 
