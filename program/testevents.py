@@ -81,6 +81,7 @@ while True:
     except KeyboardInterrupt:
         print "okbye"
         GPIO.cleanup()
+        pass
     except:
         print "Unexpected error:", sys.exc_info()[0]
         GPIO.cleanup()
