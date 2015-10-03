@@ -62,6 +62,14 @@ i = 1
 for (i, row) in enumerate(rows):
     print i, row
     GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+
+for (i, column) in enumerate(columns):
+    print i, column
+    GPIO.remove_event_detect(column)
+    GPIO.setup(column, GPIO.OUT)
+
+for (i, row) in enumerate(rows):
+    print i, row
     GPIO.add_event_detect(row, GPIO.RISING, callback=row_changed) 
 
 while True:
