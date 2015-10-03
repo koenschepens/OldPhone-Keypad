@@ -46,7 +46,7 @@ logging.info(str(now))
 #GPIO.cleanup()
 logging.info("Setting GPIO mode to BCM")
 GPIO.setmode(GPIO.BCM)
-
+GPIO.cleanup()
 def row_changed(row):
     print('Row changed: ' + str(row))
 
