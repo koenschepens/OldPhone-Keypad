@@ -78,6 +78,10 @@ while True:
         print("." * i)
         i = i + 1
         sleep(1)
-    finally:
+    except KeyboardInterrupt:
+        print "okbye"
         GPIO.cleanup()
-    pass
+    except:
+        print "Unexpected error:", sys.exc_info()[0]
+            GPIO.cleanup()
+    raise
