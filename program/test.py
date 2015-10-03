@@ -71,14 +71,14 @@ while True:
 
     for column in columns:
         value = GPIO.input(column)
-        logging.info("column " + str(column) + ": " + str(value))
+        logging.info("column " + str(column) + " in mode " + str(GPIO.getmode(column)) + ": " + str(value))
 
 
     #switch back to reading rows  
     setReadWrite(rows, columns)
     for row in rows:
         value = GPIO.input(row)
-        logging.info("row " + str(row) + ": " + str(value))
+        logging.info("row " + str(row) + " in mode " + str(GPIO.getmode(row)) + ": " + str(value))
 
     sleep(1)
 
