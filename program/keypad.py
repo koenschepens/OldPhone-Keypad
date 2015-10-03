@@ -198,5 +198,6 @@ previousChannelVal = G.NONE
 
 while True:
     start()
-    sleep(0.05)
+    sleep(1)
+    logging.info(".")
     pass
