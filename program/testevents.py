@@ -65,10 +65,6 @@ def row_changed(row):
 def column_changed(column):
     print('Column changed: ' + str(column))
 
-rows = []
-columns = []
-channelEnums = [G.BCM21,G.BCM07,G.BCM06,G.BCM12,G.BCM13,G.BCM19,G.BCM08,G.BCM05,G.BCM16,G.BCM26,G.BCM20]
-values = [0,0,0,0,0,0,0,0,0,0]
 i = 1
 
 gpiokeymappings = config.options("gpiokeymapping")
@@ -88,7 +84,6 @@ for option in gpiokeymappings:
         print("OUT: " + str(column))
         columns.append(column)
         GPIO.setup(column, GPIO.OUT)
-        GPIO.remove_event_detect(column)
 
 while True:
     try:
