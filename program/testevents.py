@@ -69,7 +69,7 @@ i = 1
 def row_changed(row):
     global rows
     print('Row changed: ' + str(row))
-    print('Contains columns: ' + ", ".join(rows[row]))
+    print('Contains columns: ' + str(rows[row]))
 
 gpiokeymappings = config.options("gpiokeymapping")
 
