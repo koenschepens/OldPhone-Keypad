@@ -47,16 +47,6 @@ logging.info(str(now))
 logging.info("Setting GPIO mode to BCM")
 GPIO.setmode(GPIO.BCM)
 
-def setReadWrite(channelsToDown, channelsToUp):
-    logging.info("switching rows/columns")
-    for row in channelsToDown:
-        #logging.info("Setting up channel " + str(row) + " to PUD_DOWN. ")
-        
-    for column in channelsToUp:
-        #logging.info("Setting up channel " + str(column) + " to PUD_UP. ")
-        #GPIO.setup(column, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.setup(column, GPIO.OUT)
-
 def row_changed(row):
     print('Row changed: ' + str(row))
 
