@@ -146,6 +146,7 @@ def row_changed(button, i):
     #now read columns
     for column in columns:
         value = GPIO.input(column)
+        logging.info("column " + str(column) + ": " + str(value))
         if value:
             logging.info("column " + str(channelEnums[i]))
             channelVal = channelVal + channelEnums[i]
