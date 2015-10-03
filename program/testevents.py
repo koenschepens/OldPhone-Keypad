@@ -75,8 +75,8 @@ gpiokeymappings = config.options("gpiokeymapping")
 
 for option in gpiokeymappings:
     print (option)
-    row = Config.get("gpiokeymapping", option).split(",")[0]
-    column = Config.get("gpiokeymapping", option).split(",")[1]
+    row = config.get("gpiokeymapping", option).split(",")[0]
+    column = config.get("gpiokeymapping", option).split(",")[1]
 
     print("IN: " + str(row))
     GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
