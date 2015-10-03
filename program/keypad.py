@@ -175,6 +175,7 @@ def start():
     i = 0
     for row in rows:
         value = GPIO.input(row)
+        logging.info("row " + str(row) + ": " + str(value))
         if value:
             channelVal = channelVal + channelEnums[i]
         i = i + 1
