@@ -65,6 +65,8 @@ def row_changed(row):
 def column_changed(column):
     print('Column changed: ' + str(column))
 
+rows = []
+columns = []
 i = 1
 
 gpiokeymappings = config.options("gpiokeymapping")
