@@ -101,13 +101,14 @@ logging.info("Setting GPIO mode to BCM")
 GPIO.setmode(GPIO.BCM)
 
 def setReadWrite(channelsToDown, channelsToUp):
+    logging.info("switching rows/columns")
     for row in channelsToDown:
-        logging.info("Setting up channel " + str(row) + " to PUD_DOWN. ")
+        l#ogging.info("Setting up channel " + str(row) + " to PUD_DOWN. ")
         GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     for column in channelsToUp:
-        logging.info("Setting up channel " + str(column) + " to PUD_UP. ")
-        GPIO.setup(column, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        #GPIO.setup(column, GPIO.OUT)
+        #logging.info("Setting up channel " + str(column) + " to PUD_UP. ")
+        #GPIO.setup(column, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(column, GPIO.OUT)
 
 
 rows = [7,6,12,13,19]
