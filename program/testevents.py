@@ -65,8 +65,8 @@ for (i, row) in enumerate(rows):
 
 for (i, column) in enumerate(columns):
     print("OUT: " + str(column))
-    GPIO.remove_event_detect(column)
     GPIO.setup(column, GPIO.OUT)
+    GPIO.remove_event_detect(column)
 
 for (i, row) in enumerate(rows):
     print i, row
