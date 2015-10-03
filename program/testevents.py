@@ -70,7 +70,7 @@ for (i, column) in enumerate(columns):
 
 for (i, row) in enumerate(rows):
     print i, row
-    print("Event detection: " + str(column))
+    print("Event detection: " + str(row))
     GPIO.add_event_detect(row, GPIO.RISING, callback=row_changed) 
 
 while True:
