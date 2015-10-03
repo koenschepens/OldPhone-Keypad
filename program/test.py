@@ -58,6 +58,7 @@ def setReadWrite(channelsToDown, channelsToUp):
         GPIO.setup(column, GPIO.OUT)
 
 
+
 rows = [7,6,12,13,19]
 columns = [21,8,5,16,26,20]
 channelEnums = [G.BCM07,G.BCM06,G.BCM12,G.BCM13,G.BCM19,G.BCM21,G.BCM08,G.BCM05,G.BCM16,G.BCM26,G.BCM20]
@@ -70,8 +71,6 @@ while True:
     for column in columns:
         value = GPIO.input(column)
         logging.info("column " + str(column) + ": " + str(value))
-        if value:
-            channelVal = channelVal + channelEnums[i]
         i = i + 1;
 
 
@@ -81,8 +80,6 @@ while True:
     for row in rows:
         value = GPIO.input(row)
         logging.info("row " + str(row) + ": " + str(value))
-        if value:
-            channelVal = channelVal + channelEnums[i]
         i = i + 1
 
     sleep(1)
