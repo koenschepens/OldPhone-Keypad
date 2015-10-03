@@ -75,14 +75,14 @@ gpiokeymappings = config.options("gpiokeymapping")
 
 for option in gpiokeymappings:
     print (option)
-    row = config.get("gpiokeymapping", option).split(",")[0]
-    column = config.get("gpiokeymapping", option).split(",")[1]
+    row = int(config.get("gpiokeymapping", option).split(",")[0])
+    column = int(config.get("gpiokeymapping", option).split(",")[1])
 
     print("IN: " + str(row))
     print("OUT: " + str(column))
 
-    GPIO.setup(int(row), GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-    GPIO.setup(int(column), GPIO.OUT)
+    GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+    GPIO.setup(column, GPIO.OUT)
     GPIO.remove_event_detect(column)
     GPIO.add_event_detect(row, GPIO.RISING, callback=row_changed) 
 
