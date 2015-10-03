@@ -62,7 +62,7 @@ i = 1
 for (i, row) in enumerate(rows):
     print i, row
     GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-    GPIO.add_event_detect(channel, GPIO.RISING, callback=row_changed) 
+    GPIO.add_event_detect(row, GPIO.RISING, callback=row_changed) 
 
 while True:
     print("." * i)
