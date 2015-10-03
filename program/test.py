@@ -65,22 +65,20 @@ channelEnums = [G.BCM07,G.BCM06,G.BCM12,G.BCM13,G.BCM19,G.BCM21,G.BCM08,G.BCM05,
 values = [0,0,0,0,0,0,0,0,0,0]
 
 while True:
+
     #switch columns to input to read the values
     setReadWrite(columns, rows)
 
     for column in columns:
         value = GPIO.input(column)
         logging.info("column " + str(column) + ": " + str(value))
-        i = i + 1;
 
 
     #switch back to reading rows  
     setReadWrite(rows, columns)
-    i = 0
     for row in rows:
         value = GPIO.input(row)
         logging.info("row " + str(row) + ": " + str(value))
-        i = i + 1
 
     sleep(1)
 
