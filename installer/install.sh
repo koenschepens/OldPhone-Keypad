@@ -18,3 +18,4 @@ if [ ! -f $serviceFolder/keypad.config ]
 fi
 
 echo "Done"
+
