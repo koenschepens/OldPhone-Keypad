@@ -82,7 +82,7 @@ for option in gpiokeymappings:
         print("IN: " + str(row))
         rows[row] = [column]
         GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-        GPIO.add_event_detect(row, GPIO.ANY, callback=row_changed) 
+        GPIO.add_event_detect(row, GPIO.RISING, callback=row_changed) 
     else:
         rows[row].append(column)
 
