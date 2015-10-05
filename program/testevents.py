@@ -71,13 +71,12 @@ def row_changed(row):
 def main():
     # Read all GPIO key mappings and ad them to the keys dictionary 
     for option in gpiokeymappings:
-        print (option)
         row = int(config.get("gpiokeymapping", option).split(",")[0])
         column = int(config.get("gpiokeymapping", option).split(",")[1])
 
         # define key for later retrieval
         keys[config.get("gpiokeymapping", option)] = option
-        logging.info("setting up key " + option + "as [" + str(row) + "," + str(column) + "]")
+        logging.info("setting up " + option + " as [" + str(row) + "," + str(column) + "]")
 
         if row not in rows:
             rows[row] = [column]
