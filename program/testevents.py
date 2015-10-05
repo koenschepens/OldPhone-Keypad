@@ -56,8 +56,8 @@ def row_changed(row):
     # Read which column it was
     for column in rows[row]:
         columnValue = GPIO.input(column)
-
-    print(keys[str(row) + "," + str(columnValue)])
+        if(columnValue):
+            print(keys[str(row) + "," + str(column)])
 
 gpiokeymappings = config.options("gpiokeymapping")
 
