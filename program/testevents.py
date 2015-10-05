@@ -36,7 +36,7 @@ rows = {}
 
 #keep seperate array with columns to check if already set up
 columns = []
-keys = [][]
+keys = [[]]
 i = 1
 
 def row_changed(row):
@@ -58,7 +58,7 @@ def row_changed(row):
     for column in rows[row]:
         columnValue = GPIO.input(column)
 
-    print(keys[rowValue, columnValue])
+    print(keys[rowValue][columnValue])
 
 gpiokeymappings = config.options("gpiokeymapping")
 
