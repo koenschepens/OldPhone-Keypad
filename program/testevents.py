@@ -70,6 +70,8 @@ def row_changed(row):
 
 gpiokeymappings = config.options("gpiokeymapping")
 
+GPIO.cleanup()
+
 # Read all GPIO key mappings and ad them to the keys dictionary 
 for option in gpiokeymappings:
     print (option)
