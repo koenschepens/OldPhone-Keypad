@@ -97,3 +97,4 @@ for option in gpiokeymappings:
 while True:
     print("a")
     sleep(1)
+    pass 
