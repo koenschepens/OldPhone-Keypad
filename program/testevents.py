@@ -41,7 +41,6 @@ i = 1
 
 def row_changed(row):
     global rows
-    rowvalue = row
     print('Row changed: ' + str(row))
     print('Contains columns: ' + str(rows[row]))
     GPIO.setup(row, GPIO.OUT)
@@ -58,7 +57,7 @@ def row_changed(row):
     for column in rows[row]:
         columnValue = GPIO.input(column)
 
-    print(keys[str(rowValue) + "," + str(columnValue)])
+    print(keys[str(row) + "," + str(columnValue)])
 
 gpiokeymappings = config.options("gpiokeymapping")
 
