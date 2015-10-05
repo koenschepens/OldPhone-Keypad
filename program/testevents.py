@@ -56,8 +56,9 @@ def row_changed(row):
     # Read which column it was
     for column in rows[row]:
         columnValue = GPIO.input(column)
+
         if(columnValue):
-            print(keys[str(row) + "," + str(column)])
+            print("key: " + keys[str(row) + "," + str(column)])
 
     # Set row and columns back to original setup
     GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
