@@ -19,34 +19,6 @@ addonFolder = "/home/osmc/.kodi/addons/service.keypad/"
 config = ConfigParser.RawConfigParser()
 config.read(addonFolder + 'keypad.config')
 
-class G(Enum):
-    NONE = 0
-    BCM08 = 1
-    BCM07 = 2
-    BCM05 = 4
-    BCM06 = 8
-    BCM12 = 16
-    BCM13 = 32
-    BCM19 = 64
-    BCM16 = 128
-    BCM26 = 256
-    BCM20 = 512
-    BCM21 = 1024
-   
-    BUTTON1 = BCM19+BCM20
-    BUTTON2 = BCM19+BCM26
-    BUTTON3 = BCM19+BCM16
-    BUTTON4 = BCM13+BCM20
-    BUTTON5 = BCM13+BCM26
-    BUTTON6 = BCM13+BCM16
-    BUTTON7 = BCM12+BCM20
-    BUTTON8 = BCM05+BCM12
-    BUTTON9 = BCM12+BCM16
-    BUTTON0 = BCM21+BCM06
-    BUTTONSTER = BCM06+BCM20
-    BUTTONHEK = BCM08+BCM07
-
-
 #logging.basicConfig(filename=addonFolder + 'keypad.log',level=logging.INFO)
 logging.basicConfig(level=logging.INFO)
 
@@ -64,19 +36,39 @@ rows = {}
 
 #keep seperate array with columns to check if already set up
 columns = []
+keys = {}
 i = 1
 
 def row_changed(row):
     global rows
+    rowvalue = row
     print('Row changed: ' + str(row))
     print('Contains columns: ' + str(rows[row]))
+    GPIO.setup(row, GPIO.OUT)
+    GPIO.remove_event_detect(row)
+
+    # Set columns as in
+    for column in rows[row]:
+        GPIO.setup(column, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+
+    # Send signal from row to columns
+    GPIO.output(row, 1)
+
+    # Read which column it was
+    for column in rows[row]:
+        columnValue = GPIO.input(column)
+
+    print(keys[rowValue, columnValue])
 
 gpiokeymappings = config.options("gpiokeymapping")
 
+# Read all GPIO key mappings and ad them to the keys dictionary 
 for option in gpiokeymappings:
     print (option)
     row = int(config.get("gpiokeymapping", option).split(",")[0])
     column = int(config.get("gpiokeymapping", option).split(",")[1])
+    
+    keys[[row, column]] = option;
 
     if row not in rows:
         print("IN: " + str(row))
@@ -94,9 +86,7 @@ for option in gpiokeymappings:
 
 while True:
     try:
-        print("." * i)
-        i = i + 1
-        sleep(1)
+        sleep(0.05)
     except KeyboardInterrupt:
         print "okbye"
         raise
