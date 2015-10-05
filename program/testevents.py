@@ -17,7 +17,10 @@ except:
 addonFolder = "/home/osmc/.kodi/addons/service.keypad/" 
 
 config = ConfigParser.RawConfigParser()
-config.read(addonFolder + 'keypad.config')
+configFile = addonFolder + 'keypad.config'
+logging.info("reading config file " + configFile)
+config.read(configFile)
+
 
 #logging.basicConfig(filename=addonFolder + 'keypad.log',level=logging.INFO)
 logging.basicConfig(level=logging.INFO)
