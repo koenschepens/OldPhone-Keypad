@@ -1,4 +1,4 @@
-#!/etc/bash
+#!/bin/bash
 
 sudo git pull
 sudo ./testevents.py
