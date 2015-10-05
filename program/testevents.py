@@ -39,6 +39,8 @@ columns = []
 keys = {}
 i = 1
 
+gpiokeymappings = config.options("gpiokeymapping")
+
 def row_changed(row):
     global rows
     GPIO.remove_event_detect(row)
@@ -90,7 +92,6 @@ for option in gpiokeymappings:
         GPIO.setup(column, GPIO.OUT)
         GPIO.output(column, 1)   
 
-gpiokeymappings = config.options("gpiokeymapping")
 
 while True:
     try:
