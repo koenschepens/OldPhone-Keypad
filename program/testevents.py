@@ -94,7 +94,7 @@ for option in gpiokeymappings:
         GPIO.setup(column, GPIO.OUT)
         GPIO.output(column, 1)  
 
-while True:
+while 1=1:
     print("a")
     sleep(1)
     pass 
