@@ -94,6 +94,8 @@ for option in gpiokeymappings:
         GPIO.setup(column, GPIO.OUT)
         GPIO.output(column, 1)  
 
+sleep(4)
+
 while 0 < 1:
     print("a")
     sleep(1)
