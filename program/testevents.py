@@ -16,14 +16,13 @@ except:
 
 addonFolder = "/home/osmc/.kodi/addons/service.keypad/" 
 
+#logging.basicConfig(filename=addonFolder + 'keypad.log',level=logging.INFO)
+logging.basicConfig(level=logging.INFO)
+
 config = ConfigParser.RawConfigParser()
 configFile = addonFolder + 'keypad.config'
 logging.info("reading config file " + configFile)
 config.read(configFile)
-
-
-#logging.basicConfig(filename=addonFolder + 'keypad.log',level=logging.INFO)
-logging.basicConfig(level=logging.INFO)
 
 now = datetime.now().isoformat()
 
