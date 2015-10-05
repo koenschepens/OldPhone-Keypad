@@ -41,14 +41,11 @@ i = 1
 
 def row_changed(row):
     global rows
-    print('Row changed: ' + str(row))
-    print('Contains columns: ' + str(rows[row]))
     GPIO.remove_event_detect(row)
     GPIO.setup(row, GPIO.OUT)
 
     # Set columns as in
     for column in rows[row]:
-        print("IN: " + str(column))
         GPIO.setup(column, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
     # Send signal from row to columns
@@ -81,7 +78,6 @@ def main():
         # define key for later retrieval
         keys[config.get("gpiokeymapping", option)] = option
 
-        print("row " + str(row))
         if row not in rows:
             rows[row] = [column]
             GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
@@ -90,7 +86,6 @@ def main():
             rows[row].append(column)
 
         if column not in columns:
-            print("col " + str(column))
             columns.append(column)
             GPIO.setup(column, GPIO.OUT)
             GPIO.output(column, 1)   
