@@ -58,7 +58,7 @@ def row_changed(row):
     for column in rows[row]:
         columnValue = GPIO.input(column)
 
-    print(keys[rowValue][columnValue])
+    print(keys[str(rowValue) + "," + str(columnValue)])
 
 gpiokeymappings = config.options("gpiokeymapping")
 
@@ -69,7 +69,6 @@ for option in gpiokeymappings:
     column = int(config.get("gpiokeymapping", option).split(",")[1])
 
     # define key for later retrieval
-    keys.append(config.get("gpiokeymapping", option))
     keys[config.get("gpiokeymapping", option)] = option
 
     if row not in rows:
