@@ -72,8 +72,8 @@ def initialize():
         # define key for later retrieval
         keys[config.get("gpiokeymapping", option)] = option
 
+        print("row " + str(row))
         if row not in rows:
-            print("IN: " + str(row))
             rows[row] = [column]
             GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
             GPIO.add_event_detect(row, GPIO.RISING, callback=row_changed) 
@@ -81,7 +81,7 @@ def initialize():
             rows[row].append(column)
 
         if column not in columns:
-            print("OUT: " + str(column))
+            print("col " + str(column))
             columns.append(column)
             GPIO.setup(column, GPIO.OUT)
             GPIO.output(column, 1)   
