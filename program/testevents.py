@@ -82,8 +82,6 @@ def row_changed(row):
 
 gpiokeymappings = config.options("gpiokeymapping")
 
-GPIO.cleanup()
-
 # Read all GPIO key mappings and ad them to the keys dictionary 
 for option in gpiokeymappings:
     print (option)
@@ -125,6 +123,8 @@ while 0 < 1:
     try:
         sleep(0.05)
     except KeyboardInterrupt:
+        logging.info("Exiting...")
         GPIO.cleanup()
+        xbmc.close()
         raise
 pass 
