@@ -94,13 +94,4 @@ for option in gpiokeymappings:
 
 while True:
     print("a")
-    try:
-        sleep(1)
-    except KeyboardInterrupt:
-        print "okbye"
-        raise
-    except:
-        print "Exit:", sys.exc_info()[0]
-        GPIO.cleanup()
-        raise
-    pass
+    sleep(1)
