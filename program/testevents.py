@@ -90,12 +90,12 @@ for option in gpiokeymappings:
     if column not in columns:
         columns.append(column)
         GPIO.setup(column, GPIO.OUT)
-        GPIO.output(column, 1)   
-
+        GPIO.output(column, 1)  
 
 while True:
     try:
-        sleep(0.05)
+        print("a")
+        sleep(1)
     except KeyboardInterrupt:
         print "okbye"
         raise
