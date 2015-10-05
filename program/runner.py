@@ -2,7 +2,7 @@ import os
 import logging
 addonFolder = "/home/osmc/.kodi/addons/service.keypad/" 
 
-logging.basicConfig(filename=addonFolder + 'keypad.log',level=logging.INFO)
+logging.basicConfig(filename='keypad.log',level=logging.INFO)
 
 logging.info("starting keypad")
 
