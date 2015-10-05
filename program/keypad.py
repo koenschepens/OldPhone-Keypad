@@ -16,8 +16,8 @@ except:
 
 addonFolder = "/home/osmc/.kodi/addons/service.keypad/" 
 
-#logging.basicConfig(filename=addonFolder + 'keypad.log',level=logging.INFO)
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(filename=addonFolder + 'keypad.log',level=logging.INFO)
+#logging.basicConfig(level=logging.INFO)
 
 config = ConfigParser.RawConfigParser()
 configFile = addonFolder + 'keypad.config'
@@ -28,8 +28,6 @@ now = datetime.now().isoformat()
 
 logging.info(str(now))
 
-#logging.info("Cleanup GPIO")
-#GPIO.cleanup()
 logging.info("Setting GPIO mode to BCM")
 GPIO.setmode(GPIO.BCM)
 
