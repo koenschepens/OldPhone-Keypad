@@ -12,12 +12,12 @@ if [ ! -d $serviceFolder ]
 fi
 
 echo "copying program files"
-cp ../program/* $serviceFolder/
+cp ../program/* $serviceFolder/ -v
 
 if [ ! -f $serviceFolder/keypad.config ] || [ "$1" == "f" ]
 	then
 		echo "copying config"
-		cp ./keypad.config $serviceFolder/keypad.config
+		cp ./keypad.config $serviceFolder/keypad.config -v
 fi
 
 echo "Done"
