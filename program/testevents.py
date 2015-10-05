@@ -36,7 +36,7 @@ rows = {}
 
 #keep seperate array with columns to check if already set up
 columns = []
-keys = {}
+keys = [][]
 i = 1
 
 def row_changed(row):
