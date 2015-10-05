@@ -44,8 +44,7 @@ i = 1
 def send_key(key):
     try:
         global mapping
-        print(kbmapping[channelVal])
-        xbmc.send_keyboard_button(button=kbmapping[channelVal])
+        xbmc.send_keyboard_button(button=key)
     except:
         logging.warning("value invalid")
 
