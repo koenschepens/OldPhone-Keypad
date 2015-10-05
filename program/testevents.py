@@ -70,29 +70,31 @@ def row_changed(row):
 
     GPIO.add_event_detect(row, GPIO.RISING, callback=row_changed) 
 
-# Read all GPIO key mappings and ad them to the keys dictionary 
-for option in gpiokeymappings:
-    print (option)
-    row = int(config.get("gpiokeymapping", option).split(",")[0])
-    column = int(config.get("gpiokeymapping", option).split(",")[1])
+def start():
+    # Read all GPIO key mappings and ad them to the keys dictionary 
+    for option in gpiokeymappings:
+        print (option)
+        row = int(config.get("gpiokeymapping", option).split(",")[0])
+        column = int(config.get("gpiokeymapping", option).split(",")[1])
 
-    # define key for later retrieval
-    keys[config.get("gpiokeymapping", option)] = option
-    logging.info("setting up " + option + " as [" + str(row) + "," + str(column) + "]")
+        # define key for later retrieval
+        keys[config.get("gpiokeymapping", option)] = option
+        logging.info("setting up " + option + " as [" + str(row) + "," + str(column) + "]")
 
-    if row not in rows:
-        rows[row] = [column]
-        GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-        GPIO.add_event_detect(row, GPIO.RISING, callback=row_changed) 
-    else:
-        rows[row].append(column)
+        if row not in rows:
+            rows[row] = [column]
+            GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+            GPIO.add_event_detect(row, GPIO.RISING, callback=row_changed) 
+        else:
+            rows[row].append(column)
 
-    if column not in columns:
-        columns.append(column)
-        GPIO.setup(column, GPIO.OUT)
-        GPIO.output(column, 1)  
+        if column not in columns:
+            columns.append(column)
+            GPIO.setup(column, GPIO.OUT)
+            GPIO.output(column, 1)  
 
 def main():
+    start()
     while True:
         print("a")
         try:
