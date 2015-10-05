@@ -77,6 +77,7 @@ def main():
 
         # define key for later retrieval
         keys[config.get("gpiokeymapping", option)] = option
+        logging.info("setting up key " + option + "as [" + str(row) + "," + str(column) + "]")
 
         if row not in rows:
             rows[row] = [column]
