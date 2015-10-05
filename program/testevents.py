@@ -92,15 +92,16 @@ for option in gpiokeymappings:
         GPIO.setup(column, GPIO.OUT)
         GPIO.output(column, 1)  
 
-while True:
-    print("a")
-    try:
-        sleep(1)
-    except KeyboardInterrupt:
-        print "okbye"
-        raise
-    except:
-        print "Unexpected error:", sys.exc_info()[0]
-        GPIO.cleanup()
-        raise
-pass
+def main():
+    while True:
+        print("a")
+        try:
+            sleep(1)
+        except KeyboardInterrupt:
+            print "okbye"
+            raise
+        except:
+            print "Exit:", sys.exc_info()[0]
+            GPIO.cleanup()
+            raise
+        pass
