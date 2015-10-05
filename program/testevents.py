@@ -43,7 +43,6 @@ i = 1
 
 def send_key(key):
     try:
-        global mapping
         xbmc.send_keyboard_button(button=key)
         sleep(0.25)
         xbmc.release_button()
