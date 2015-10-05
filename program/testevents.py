@@ -68,7 +68,7 @@ for option in gpiokeymappings:
     row = int(config.get("gpiokeymapping", option).split(",")[0])
     column = int(config.get("gpiokeymapping", option).split(",")[1])
     
-    keys[[row, column]] = option;
+    keys[row][column] = option;
 
     if row not in rows:
         print("IN: " + str(row))
