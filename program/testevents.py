@@ -43,15 +43,17 @@ def row_changed(row):
     global rows
     print('Row changed: ' + str(row))
     print('Contains columns: ' + str(rows[row]))
-    GPIO.setup(row, GPIO.OUT)
     GPIO.remove_event_detect(row)
+    GPIO.setup(row, GPIO.OUT)
 
     # Set columns as in
     for column in rows[row]:
+        print("IN: " + str(column))
         GPIO.setup(column, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
     # Send signal from row to columns
     GPIO.output(row, 1)
+    sleep(0.05)
 
     # Read which column it was
     for column in rows[row]:
