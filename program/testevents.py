@@ -69,7 +69,7 @@ def row_changed(row):
         if(columnValue):
             key = keys[str(row) + "," + str(column)]
             print("key: " + key)
-            send_key(key)
+            #send_key(key)
 
     # Set row and columns back to original setup
     GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
