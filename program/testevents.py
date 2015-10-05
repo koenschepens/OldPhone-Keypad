@@ -16,6 +16,37 @@ except:
 
 addonFolder = "/home/osmc/.kodi/addons/service.keypad/" 
 
+# Mapping to keyboard events
+mapping = {
+    G.BUTTON1: "one",
+    G.BUTTON2: "two",
+    G.BUTTON3: "three",
+    G.BUTTON4: "four",
+    G.BUTTON5: "five",
+    G.BUTTON6: "six",
+    G.BUTTON7: "seven",
+    G.BUTTON8: "eight",
+    G.BUTTON9: "nine",
+    G.BUTTON0: "zero",
+    G.BUTTONHEK: "HEK",
+    G.BUTTONSTER: "STER"
+}
+# Mapping to keyboard events
+kbmapping = {
+        G.BUTTON1: "plus",
+        G.BUTTON2: "up",
+        G.BUTTON3: "3",
+        G.BUTTON4: "left",
+        G.BUTTON5: "enter",
+        G.BUTTON6: "right",
+        G.BUTTON7: "minus",
+        G.BUTTON8: "down",
+        G.BUTTON9: "space",
+        G.BUTTON0: "esc",
+        G.BUTTONHEK: "a",
+        G.BUTTONSTER: "backspace"
+}
+
 #logging.basicConfig(filename=addonFolder + 'keypad.log',level=logging.INFO)
 logging.basicConfig(level=logging.INFO)
 
@@ -41,6 +72,14 @@ columns = []
 keys = {}
 i = 1
 
+def send_key(key):
+      try:
+            global mapping
+            print(kbmapping[channelVal])
+            xbmc.send_keyboard_button(button=kbmapping[channelVal])
+        except:
+            logging.warning("value invalid")
+
 def row_changed(row):
     global rows
     GPIO.remove_event_detect(row)
@@ -59,7 +98,9 @@ def row_changed(row):
         columnValue = GPIO.input(column)
 
         if(columnValue):
-            print("key: " + keys[str(row) + "," + str(column)])
+            key = keys[str(row) + "," + str(column)]
+            print("key: " + key)
+            send_key(key)
 
     # Set row and columns back to original setup
     GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
@@ -94,10 +135,22 @@ for option in gpiokeymappings:
     if column not in columns:
         columns.append(column)
         GPIO.setup(column, GPIO.OUT)
-        GPIO.output(column, 1)  
+        GPIO.output(column, 1)
 
 print("waiting for everything to be set up...")
 sleep(1)
+
+logging.info("Setting up Kodi client")
+
+host = config.get("xbmc", "host")
+port = config.getint("xbmc", "port")
+
+logging.info("host: " + str(host))
+logging.info("port: " + str(port))
+
+# Create an XBMCClient object and connect
+xbmc = XBMCClient("OldPhone", "/etc/lirc/osmc-remote-lircd.png")
+xbmc.connect()
 
 while 0 < 1:
     try:
