@@ -59,11 +59,14 @@ def row_changed(row):
         if(columnValue):
             print(keys[str(row) + "," + str(column)])
 
+    # Set row and columns back to original setup
     GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
     for column in rows[row]:
         GPIO.setup(column, GPIO.OUT)
         GPIO.output(column, 1)
+
+    GPIO.add_event_detect(row, GPIO.RISING, callback=row_changed) 
 
 def main():
     # Read all GPIO key mappings and ad them to the keys dictionary 
