@@ -59,10 +59,13 @@ def row_changed(row):
         if(columnValue):
             print(keys[str(row) + "," + str(column)])
 
-    # Set everything back
-    initialize()
+    GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
-def initialize():
+    for column in rows[row]:
+        GPIO.setup(column, GPIO.OUT)
+        GPIO.output(column, 1)
+
+def main():
     # Read all GPIO key mappings and ad them to the keys dictionary 
     for option in gpiokeymappings:
         print (option)
@@ -88,7 +91,7 @@ def initialize():
 
 gpiokeymappings = config.options("gpiokeymapping")
 
-initialize()
+main()
 
 while True:
     try:
