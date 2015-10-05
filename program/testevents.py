@@ -73,12 +73,12 @@ keys = {}
 i = 1
 
 def send_key(key):
-      try:
-            global mapping
-            print(kbmapping[channelVal])
-            xbmc.send_keyboard_button(button=kbmapping[channelVal])
-        except:
-            logging.warning("value invalid")
+    try:
+        global mapping
+        print(kbmapping[channelVal])
+        xbmc.send_keyboard_button(button=kbmapping[channelVal])
+    except:
+        logging.warning("value invalid")
 
 def row_changed(row):
     global rows
