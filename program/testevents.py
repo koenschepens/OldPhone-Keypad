@@ -67,8 +67,11 @@ for option in gpiokeymappings:
     print (option)
     row = int(config.get("gpiokeymapping", option).split(",")[0])
     column = int(config.get("gpiokeymapping", option).split(",")[1])
-    
-    keys[row][column] = option;
+
+    # define key for later retrieval
+    #keys[config.get("gpiokeymapping", option)] = option
+    keys.append([row, column])
+    keys[row][column] = option
 
     if row not in rows:
         print("IN: " + str(row))
@@ -83,6 +86,7 @@ for option in gpiokeymappings:
         columns.append(column)
         GPIO.setup(column, GPIO.OUT)
         GPIO.output(column, 1)
+
 
 while True:
     try:
