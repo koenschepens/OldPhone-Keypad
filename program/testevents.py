@@ -93,8 +93,8 @@ for option in gpiokeymappings:
         GPIO.output(column, 1)  
 
 while True:
+    print("a")
     try:
-        print("a")
         sleep(1)
     except KeyboardInterrupt:
         print "okbye"
