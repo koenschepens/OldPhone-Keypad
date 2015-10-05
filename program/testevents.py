@@ -54,13 +54,12 @@ def row_changed(row):
     GPIO.remove_event_detect(row)
     GPIO.setup(row, GPIO.OUT)
 
-    # Set columns as in
     for column in rows[row]:
         GPIO.setup(column, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
     # Send signal from row to columns
     GPIO.output(row, 1)
-    sleep(0.05)
+    #sleep(0.05)
 
     # Read which column it was
     for column in rows[row]:
@@ -75,6 +74,7 @@ def row_changed(row):
     GPIO.setup(row, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
     for column in rows[row]:
+        GPIO.remove_event_detect(column)
         GPIO.setup(column, GPIO.OUT)
         GPIO.output(column, 1)
 
