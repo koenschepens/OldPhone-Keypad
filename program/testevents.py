@@ -105,3 +105,5 @@ def main():
             GPIO.cleanup()
             raise
         pass
+
+main()
