@@ -14,7 +14,7 @@ fi
 echo "copying program files"
 cp ../program/* $serviceFolder/
 
-if [ ! -f $serviceFolder/keypad.config ] || [ $1 = "f" ]
+if [ ! -f $serviceFolder/keypad.config ] || [ $1 -eq "f" ]
 	then
 		echo "copying config"
 		cp ./keypad.config $serviceFolder/keypad.config
