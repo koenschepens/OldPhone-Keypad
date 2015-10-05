@@ -16,37 +16,6 @@ except:
 
 addonFolder = "/home/osmc/.kodi/addons/service.keypad/" 
 
-# Mapping to keyboard events
-mapping = {
-    G.BUTTON1: "one",
-    G.BUTTON2: "two",
-    G.BUTTON3: "three",
-    G.BUTTON4: "four",
-    G.BUTTON5: "five",
-    G.BUTTON6: "six",
-    G.BUTTON7: "seven",
-    G.BUTTON8: "eight",
-    G.BUTTON9: "nine",
-    G.BUTTON0: "zero",
-    G.BUTTONHEK: "HEK",
-    G.BUTTONSTER: "STER"
-}
-# Mapping to keyboard events
-kbmapping = {
-        G.BUTTON1: "plus",
-        G.BUTTON2: "up",
-        G.BUTTON3: "3",
-        G.BUTTON4: "left",
-        G.BUTTON5: "enter",
-        G.BUTTON6: "right",
-        G.BUTTON7: "minus",
-        G.BUTTON8: "down",
-        G.BUTTON9: "space",
-        G.BUTTON0: "esc",
-        G.BUTTONHEK: "a",
-        G.BUTTONSTER: "backspace"
-}
-
 #logging.basicConfig(filename=addonFolder + 'keypad.log',level=logging.INFO)
 logging.basicConfig(level=logging.INFO)
 
