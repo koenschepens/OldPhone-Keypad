@@ -95,9 +95,12 @@ for option in gpiokeymappings:
         GPIO.output(column, 1)  
 
 print("waiting for everything to be set up...")
-sleep(4)
+sleep(1)
 
 while 0 < 1:
-    print("a")
-    sleep(1)
+    try:
+        sleep(0.05)
+    except KeyboardInterrupt:
+        GPIO.cleanup()
+        raise
 pass 
