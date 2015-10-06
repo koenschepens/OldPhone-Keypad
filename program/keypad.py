@@ -115,19 +115,16 @@ logging.info("port: " + str(port))
 xbmc = XBMCClient("OldPhone", addonFolder + "/icon.png")
 xbmc.connect()
 
-try:
-    if __name__ == '__main__':
-        monitor = xbmc.Monitor()
-
-        while not monitor.abortRequested():
-            # Sleep/wait for abort for 10 seconds
-            if monitor.waitForAbort(0.025):
-                GPIO.cleanup()
-                # Abort was requested while waiting. We should exit
-                break       
-except:
-    GPIO.cleanup()
-    xbmc.close()
-    logging.error("Unexpected error:", sys.exc_info()[0])
-    logging.error("Unexpected error:", sys.exc_info()[1])
-    raise
+while True:
+    try:
+        sleep(0.02)
+    except KeyboardInterrupt:
+        logging.info("Exiting...")
+        raise
+    except:
+        GPIO.cleanup()
+        xbmc.close()
+        logging.error("Unexpected error:", sys.exc_info()[0])
+        logging.error("Unexpected error:", sys.exc_info()[1])
+        raise
+pass
