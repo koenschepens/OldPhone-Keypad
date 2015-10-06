@@ -100,23 +100,17 @@ for option in gpiokeymappings:
         GPIO.output(column, 1)
 
  
-xbmc.executebuiltin('HELLO')
+logging.info("Setting up Kodi client")
 
+host = config.get("xbmc", "host")
+port = config.getint("xbmc", "port")
 
-#logging.info("waiting for everything to be set up...")
-#sleep(1)
+logging.info("host: " + str(host))
+logging.info("port: " + str(port))
 
-#logging.info("Setting up Kodi client")
-
-#host = config.get("xbmc", "host")
-#port = config.getint("xbmc", "port")
-
-#logging.info("host: " + str(host))
-#logging.info("port: " + str(port))
-
-# Create an XBMCClient object and connect
-#xbmc = XBMCClient("OldPhone", "/etc/lirc/osmc-remote-lircd.png")
-#xbmc.connect()
+# Create an XBMCClient object and connect (needed because we don't run as the same user as Kodi)
+xbmc = XBMCClient("OldPhone", addonFolder + "/icon.png")
+xbmc.connect()
 
 if __name__ == '__main__':
     monitor = xbmc.Monitor()
