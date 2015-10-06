@@ -8,11 +8,7 @@ import sys
 import logging
 import ConfigParser
 
-try:
-    from xbmc.xbmcclient import XBMCClient
-except:
-    sys.path.append('/usr/share/pyshared/xbmc')
-    from xbmcclient import XBMCClient
+import xbmc
 
 addonFolder = "/home/osmc/.kodi/addons/service.keypad/" 
 
@@ -101,32 +97,27 @@ for option in gpiokeymappings:
         GPIO.setup(column, GPIO.OUT)
         GPIO.output(column, 1)
 
-logging.info("waiting for everything to be set up...")
-sleep(1)
+#logging.info("waiting for everything to be set up...")
+#sleep(1)
 
-logging.info("Setting up Kodi client")
+#logging.info("Setting up Kodi client")
 
-host = config.get("xbmc", "host")
-port = config.getint("xbmc", "port")
+#host = config.get("xbmc", "host")
+#port = config.getint("xbmc", "port")
 
-logging.info("host: " + str(host))
-logging.info("port: " + str(port))
+#logging.info("host: " + str(host))
+#logging.info("port: " + str(port))
 
 # Create an XBMCClient object and connect
-xbmc = XBMCClient("OldPhone", "/etc/lirc/osmc-remote-lircd.png")
-xbmc.connect()
+#xbmc = XBMCClient("OldPhone", "/etc/lirc/osmc-remote-lircd.png")
+#xbmc.connect()
 
-while True:
-    try:
-        sleep(0.02)
-    except KeyboardInterrupt:
-        logging.info("Exiting...")
-        raise
-    except:
-        GPIO.cleanup()
-        xbmc.close()
-        logging.error("Unexpected error:", sys.exc_info()[0])
-        logging.error("Unexpected error:", sys.exc_info()[1])
-        raise
-
-pass 
+if __name__ == '__main__':
+    monitor = xbmc.Monitor()
+ 
+    while not monitor.abortRequested():
+        # Sleep/wait for abort for 10 seconds
+        if monitor.waitForAbort(0.025):
+            GPIO.cleanup()
+            # Abort was requested while waiting. We should exit
+            break
