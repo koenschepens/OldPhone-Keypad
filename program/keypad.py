@@ -121,7 +121,12 @@ while 0 < 1:
         sleep(0.05)
     except KeyboardInterrupt:
         logging.info("Exiting...")
+        raise
+    except:
         GPIO.cleanup()
         xbmc.close()
+        logging.error("Unexpected error:", sys.exc_info()[0])
+        logging.error("Unexpected error:", sys.exc_info()[1])
         raise
+
 pass 
