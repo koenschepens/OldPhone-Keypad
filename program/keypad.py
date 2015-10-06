@@ -114,6 +114,8 @@ for option in gpiokeymappings:
 
 if __name__ == '__main__':
     monitor = xbmc.Monitor()
+
+    xbmc.log("hello addon! ")
  
     while not monitor.abortRequested():
         # Sleep/wait for abort for 10 seconds
