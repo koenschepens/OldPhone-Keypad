@@ -27,8 +27,6 @@ logging.info(str(now))
 logging.info("Setting GPIO mode to BCM")
 GPIO.setmode(GPIO.BCM)
 
-xbmc.log("hello addon! ")
-
 #contains a dictionary of each row an array of columns for that row
 rows = {}
 
@@ -111,6 +109,8 @@ logging.info("port: " + str(port))
 # Create an XBMCClient object and connect (needed because we don't run as the same user as Kodi)
 xbmc = XBMCClient("OldPhone", addonFolder + "/icon.png")
 xbmc.connect()
+
+xbmc.log("Addon keypad started")
 
 if __name__ == '__main__':
     monitor = xbmc.Monitor()
