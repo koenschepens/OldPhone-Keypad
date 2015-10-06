@@ -27,6 +27,8 @@ logging.info(str(now))
 logging.info("Setting GPIO mode to BCM")
 GPIO.setmode(GPIO.BCM)
 
+xbmc.log("hello addon! ")
+
 #contains a dictionary of each row an array of columns for that row
 rows = {}
 
@@ -116,7 +118,7 @@ if __name__ == '__main__':
     monitor = xbmc.Monitor()
 
     xbmc.log("hello addon! ")
- 
+
     while not monitor.abortRequested():
         # Sleep/wait for abort for 10 seconds
         if monitor.waitForAbort(0.025):
