@@ -7,8 +7,8 @@ from datetime import datetime
 import sys
 import logging
 import ConfigParser
-
 import xbmc
+import xbmcaddon
 
 addonFolder = "/home/osmc/.kodi/addons/service.keypad/" 
 
@@ -98,6 +98,10 @@ for option in gpiokeymappings:
         columns.append(column)
         GPIO.setup(column, GPIO.OUT)
         GPIO.output(column, 1)
+
+ 
+xbmc.executebuiltin('HELLO')
+
 
 #logging.info("waiting for everything to be set up...")
 #sleep(1)
