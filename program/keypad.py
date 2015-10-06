@@ -116,9 +116,9 @@ logging.info("port: " + str(port))
 xbmc = XBMCClient("OldPhone", "/etc/lirc/osmc-remote-lircd.png")
 xbmc.connect()
 
-while 0 < 1:
+while True:
     try:
-        sleep(0.05)
+        sleep(0.02)
     except KeyboardInterrupt:
         logging.info("Exiting...")
         raise
