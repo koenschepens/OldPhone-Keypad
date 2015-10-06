@@ -49,7 +49,6 @@ def send_key(key):
 
 def row_changed(row):
     global rows
-    logging.info("row changed: " + str(row))
     GPIO.remove_event_detect(row)
     GPIO.setup(row, GPIO.OUT)
 
@@ -66,6 +65,7 @@ def row_changed(row):
 
         if(columnValue):
             key = keys[str(row) + "," + str(column)]
+            logging.info("row changed: " + str(row))
             send_key(key)
 
     # Set row and columns back to original setup
