@@ -82,7 +82,6 @@ gpiokeymappings = config.options("gpiokeymapping")
 
 # Read all GPIO key mappings and ad them to the keys dictionary 
 for option in gpiokeymappings:
-    logging.info (option)
     row = int(config.get("gpiokeymapping", option).split(",")[0])
     column = int(config.get("gpiokeymapping", option).split(",")[1])
 
