@@ -49,6 +49,7 @@ def send_key(key):
 
 def row_changed(row):
     global rows
+    logging.info("row changed: " + str(row))
     GPIO.remove_event_detect(row)
     GPIO.setup(row, GPIO.OUT)
 
@@ -82,7 +83,7 @@ gpiokeymappings = config.options("gpiokeymapping")
 
 # Read all GPIO key mappings and ad them to the keys dictionary 
 for option in gpiokeymappings:
-    print (option)
+    logging.info (option)
     row = int(config.get("gpiokeymapping", option).split(",")[0])
     column = int(config.get("gpiokeymapping", option).split(",")[1])
 
@@ -102,7 +103,7 @@ for option in gpiokeymappings:
         GPIO.setup(column, GPIO.OUT)
         GPIO.output(column, 1)
 
-print("waiting for everything to be set up...")
+logging.info("waiting for everything to be set up...")
 sleep(1)
 
 logging.info("Setting up Kodi client")
