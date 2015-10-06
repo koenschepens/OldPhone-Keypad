@@ -7,8 +7,13 @@ from datetime import datetime
 import sys
 import logging
 import ConfigParser
-import xbmc
-import xbmcaddon
+
+try:
+    from xbmc.xbmcclient import XBMCClient
+except:
+    sys.path.append('/usr/share/pyshared/xbmc')
+    from xbmcclient import XBMCClient
+
 
 addonFolder = "/home/osmc/.kodi/addons/service.keypad/" 
 
