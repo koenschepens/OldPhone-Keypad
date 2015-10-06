@@ -88,7 +88,7 @@ for option in gpiokeymappings:
 
     # define key for later retrieval
     keys[config.get("gpiokeymapping", option)] = option
-    logging.info("setting up " + option + " as [" + str(row) + "," + str(column) + "]")
+    logging.info("setting up " + option + " as " + str(row) + "," + str(column) + "")
 
     if row not in rows:
         rows[row] = [column]
